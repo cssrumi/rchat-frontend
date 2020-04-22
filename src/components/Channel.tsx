@@ -1,9 +1,9 @@
-import MessageModel from "../model/message.model";
 import React from "react";
+import {ChannelModel} from "../model";
 
 const Channel = (channel: ChannelModel) => {
     return (
-        <div className="channel"><p>{message.sendAt.getTime()}</p> {message.message}</div>
+        <div className="channel"><p>{channel.name}</p></div>
     );
 };
 

@@ -6,7 +6,7 @@ import ChannelStatusChangedEvent from "../event/channel.status.changed.event";
 class ChannelState {
     public readonly channels: Array<ChannelModel>;
 
-    constructor(channels: Array<ChannelModel>) {
+    private constructor(channels: Array<ChannelModel>) {
         this.channels = channels;
     }
 

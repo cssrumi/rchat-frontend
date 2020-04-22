@@ -33,13 +33,9 @@ class ChannelStore {
     handleEvent(event: Event<Payload>): void {
         if (event.type.includes("ChannelCreated")) {
             this.channelState = this.channelState.fromChannelCreated(event as ChannelCreated)
-        }
-
-        if (event.type.includes("ChannelDeleted")) {
+        } else if (event.type.includes("ChannelDeleted")) {
             this.channelState = this.channelState.fromChannelDeleted(event as ChannelDeleted)
-        }
-
-        if (event.type.includes("ChannelStatusChanged")) {
+        } else if (event.type.includes("ChannelStatusChanged")) {
             this.channelState = this.channelState.fromChannelStatusChanged(event as ChannelStatusChanged)
         }
 
@@ -47,3 +43,5 @@ class ChannelStore {
     }
 
 }
+
+export default ChannelStore;

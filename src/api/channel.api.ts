@@ -1,18 +1,17 @@
 import apiCall, {createObserver} from "./api";
 import ChannelModel from "../model/channel.model";
-import { Observable } from "rxjs";
-import {Event} from '../model/event'
-import Payload from "../model/event/payload/payload";
+import {Observable} from "rxjs";
+import {Event, Payload} from '../model/event'
 
 
 const CHANNEL_RESOURCE_URI = "/v1/channel";
 const CHANNEL_EVENTS_URI = "/v1/channel-events";
 
 function getAllChannels(options: RequestInit = {}): Promise<Array<ChannelModel>> {
-    return apiCall(CHANNEL_RESOURCE_URI);
+    return apiCall(CHANNEL_RESOURCE_URI, options);
 }
 
-function addChannel(channelName: string, options: RequestInit = {}) {
+function addChannel(channelName: string, options: RequestInit = {}): Promise<void> {
     const finalOptions: RequestInit = {
         ...options,
         method: "POST",
@@ -22,11 +21,11 @@ function addChannel(channelName: string, options: RequestInit = {}) {
     return apiCall(CHANNEL_RESOURCE_URI, finalOptions);
 }
 
-function getChannel(channelName: string, options: RequestInit = {}) {
+function getChannel(channelName: string, options: RequestInit = {}): Promise<ChannelModel> {
     return apiCall(`${CHANNEL_RESOURCE_URI}/${channelName}`, options);
 }
 
-function deleteChannel(channelName: string, options: RequestInit = {}) {
+function deleteChannel(channelName: string, options: RequestInit = {}): Promise<void> {
     const finalOptions: RequestInit = {
         ...options,
         method: "DELETE",
