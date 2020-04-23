@@ -44,4 +44,6 @@ class ChannelStore {
 
 }
 
-export default ChannelStore;
+const channelStore = ChannelStore.create();
+
+export default channelStore;
