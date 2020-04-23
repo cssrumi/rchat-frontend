@@ -13,7 +13,7 @@ function login(request: LoginRequest, options: RequestInit = {}): Promise<LoginR
         method: "POST",
         body: JSON.stringify(request)
     }
-    return apiCall(LOGIN_URI, options);
+    return apiCall(LOGIN_URI, finalOptions);
 }
 
 function logout(options: RequestInit = {}): Promise<void> {
@@ -26,7 +26,7 @@ function registerUser(request: UserRegistrationRequest, options: RequestInit = {
         method: "POST",
         body: JSON.stringify(request)
     }
-    return apiCall(USER_RESOURCE_URI, options);
+    return apiCall(USER_RESOURCE_URI, finalOptions);
 }
 
 function getUser(username: string, options: RequestInit = {}): Promise<UserModel> {

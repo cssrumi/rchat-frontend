@@ -1,12 +1,12 @@
 import Payload from "./payload/payload";
 
 abstract class Event<P extends Payload> {
-    readonly type: string;
+    readonly eventType: string;
     readonly payload: P;
     readonly timestamp: number;
 
-    protected constructor(type: string, payload: P, timestamp: number) {
-        this.type = type;
+    protected constructor(eventType: string, payload: P, timestamp: number) {
+        this.eventType = eventType;
         this.payload = payload;
         this.timestamp = timestamp;
     }

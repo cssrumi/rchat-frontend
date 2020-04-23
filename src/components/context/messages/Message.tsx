@@ -1,4 +1,4 @@
-import MessageModel from "../model/message.model";
+import {MessageModel} from "../../../model";
 import React from "react";
 
 const Message = (message: MessageModel) => {
@@ -6,3 +6,5 @@ const Message = (message: MessageModel) => {
         <div className="message"><p>{message.sendAt.getTime()}</p> {message.message}</div>
     );
 };
+
+export default Message;

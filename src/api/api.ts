@@ -1,6 +1,6 @@
 import { Observable, Subscriber } from "rxjs";
 
-const API_HOST = process.env.REACT_APP_API_HOST != undefined ? process.env.REACT_APP_API_HOST : "http://localhost:8080";
+const API_HOST = process.env.REACT_APP_API_HOST !== undefined ? process.env.REACT_APP_API_HOST : "http://localhost:8080";
 const DEFAULT_OPTIONS = {
     method: "GET",
     headers: {
@@ -19,10 +19,14 @@ function apiCall<T>(uri: string, options: RequestInit = {}): Promise<T> {
         })
 }
 
+function parse<T>(rawEvent: string): T {
+    return JSON.parse(rawEvent) as T;
+}
+
 function createObserver<T>(uri: string): Observable<T> {
     return Observable.create((subscriber: Subscriber<T>) => {
-        const eventSource = new EventSource(uri);
-        eventSource.onmessage = x => subscriber.next(x.data);
+        const eventSource = new EventSource(API_HOST + uri);
+        eventSource.onmessage = x => subscriber.next(parse(x.data));
         eventSource.onerror = x => subscriber.error(x);
 
         return () => {

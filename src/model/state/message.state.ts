@@ -8,8 +8,8 @@ class MessageState {
     }
 
     newWithUpserted(message: MessageModel) {
-        const filteredMessages = this.messages.filter((msg) => msg.id == message.id);
-        const updatedMessages = [...this.messages, message];
+        const filteredMessages = this.messages.filter((msg) => msg.id === message.id);
+        const updatedMessages = [...filteredMessages, message];
         return new MessageState(updatedMessages);
     }
 

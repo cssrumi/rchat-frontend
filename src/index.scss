@@ -41,10 +41,17 @@
     padding: 10px;
     overflow-y: scroll;
 
-    .ch {
+    .activeChannel {
       min-height: 50px;
       width: 100%;
       background: pink;
+      margin-bottom: 5px;
+    }
+
+    .inactiveChannel {
+      min-height: 50px;
+      width: 100%;
+      background: gray;
       margin-bottom: 5px;
     }
   }

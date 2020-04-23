@@ -1,5 +1,6 @@
 import React from 'react';
-import Channels from './Channels';
+import Channels from './channels/Channels';
+import Messages from "./messages/Messages";
 
 const ContentWrapper = () => {
     return (
@@ -8,3 +9,5 @@ const ContentWrapper = () => {
             <Messages/>
         </div>);
 }
+
+export default ContentWrapper;

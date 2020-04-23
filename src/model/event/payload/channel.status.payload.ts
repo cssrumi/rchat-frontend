@@ -3,11 +3,11 @@ import Payload from "./payload";
 
 class ChannelStatusPayload implements Payload{
     readonly channel: string;
-    readonly status: ChannelStatusEnum;
+    readonly newStatus: ChannelStatusEnum;
 
-    constructor(channel: string, status: ChannelStatusEnum) {
+    constructor(channel: string, newStatus: ChannelStatusEnum) {
         this.channel = channel;
-        this.status = status;
+        this.newStatus = newStatus;
     }
 }
 

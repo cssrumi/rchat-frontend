@@ -4,6 +4,7 @@ import ChannelCreatedEvent from "../event/channel.created.event";
 import ChannelStatusChangedEvent from "../event/channel.status.changed.event";
 
 class ChannelState {
+    private static INSTANCE = new ChannelState(new Array<ChannelModel>());
     public readonly channels: Array<ChannelModel>;
 
     private constructor(channels: Array<ChannelModel>) {
@@ -11,7 +12,7 @@ class ChannelState {
     }
 
     newWithRemoved(channelName: string): ChannelState {
-        const filteredChannels = this.channels.filter((channel) => channel.name == channelName);
+        const filteredChannels = this.channels.filter((channel) => channel.name !== channelName);
         return new ChannelState(filteredChannels);
     }
 
@@ -30,7 +31,13 @@ class ChannelState {
     }
 
     fromChannelStatusChanged(event: ChannelStatusChangedEvent): ChannelState {
-        return this.newWithUpserted(new ChannelModel(event.payload.channel, event.payload.status))
+        const newChannel = new ChannelModel(event.payload.channel, event.payload.newStatus);
+        console.log(`${event.payload.channel} channel status changed to : ${event.payload.newStatus}`);
+        return this.newWithUpserted(newChannel);
+    }
+
+    static empty(): ChannelState {
+        return ChannelState.INSTANCE;
     }
 
     static init(channels: Array<ChannelModel>): ChannelState {

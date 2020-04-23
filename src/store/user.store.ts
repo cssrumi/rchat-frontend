@@ -14,6 +14,10 @@ class UserStore {
         this.userStateObserver.next(userState);
     }
 
+    static create() {
+        return new UserStore(UserState.empty());
+    }
+
     subscribe(setState: Dispatch<SetStateAction<UserState>>): Subscription {
         return this.userStateObserver.subscribe(setState)
     }
@@ -43,6 +47,6 @@ class UserStore {
     }
 }
 
-const userStore = UserStore;
+const userStore = UserStore.create();
 
 export default userStore;

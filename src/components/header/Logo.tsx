@@ -7,3 +7,5 @@ const Logo = () => {
             <h2>R</h2>
         </div>);
 };
+
+export default Logo;
