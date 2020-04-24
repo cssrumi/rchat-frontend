@@ -9,7 +9,8 @@ const DEFAULT_OPTIONS = {
 }
 
 function apiCall<T>(uri: string, options: RequestInit = {}): Promise<T> {
-    return fetch(API_HOST + uri, {...DEFAULT_OPTIONS, ...options})
+    const headers = {...DEFAULT_OPTIONS.headers, ...options.headers};
+    return fetch(API_HOST + uri, {...DEFAULT_OPTIONS, ...options, headers})
         .then(response => {
             if (!response.ok) {
                 throw new Error(response.statusText)

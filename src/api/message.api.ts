@@ -15,8 +15,8 @@ function sendMessage(message: SendMessageModel, channel: string, options: Reques
     return apiCall(`${CHANNEL_RESOURCE_URI}/${channel}`, finalOptions);
 }
 
-function createMessageObservable(): Observable<MessageModel> {
-    return createObserver(CHANNEL_RESOURCE_URI);
+function createMessageObservable(channelName: string): Observable<MessageModel> {
+    return createObserver(`${CHANNEL_RESOURCE_URI}/${channelName}`);
 }
 
 export {sendMessage, createMessageObservable};

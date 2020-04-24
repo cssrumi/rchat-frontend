@@ -4,7 +4,7 @@ import ChannelCreatedEvent from "../event/channel.created.event";
 import ChannelStatusChangedEvent from "../event/channel.status.changed.event";
 
 class ChannelState {
-    private static INSTANCE = new ChannelState(new Array<ChannelModel>());
+    private static readonly EMPTY_INSTANCE = new ChannelState(new Array<ChannelModel>());
     public readonly channels: Array<ChannelModel>;
 
     private constructor(channels: Array<ChannelModel>) {
@@ -60,7 +60,7 @@ class ChannelState {
     }
 
     static empty(): ChannelState {
-        return ChannelState.INSTANCE;
+        return ChannelState.EMPTY_INSTANCE;
     }
 
     static init(channels: Array<ChannelModel>): ChannelState {

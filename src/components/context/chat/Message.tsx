@@ -1,9 +1,10 @@
-import {MessageModel} from "../../../model";
 import React from "react";
+import MessageType from "./message.type";
 
-const Message = (message: MessageModel) => {
+const Message = ({message, time}: MessageType) => {
+
     return (
-        <div className="message"><p>{message.sendAt.getTime()}</p> {message.message}</div>
+        <div className="message"><p>{time}</p> {message.message}</div>
     );
 };
 

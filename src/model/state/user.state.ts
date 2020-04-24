@@ -1,5 +1,5 @@
 class UserState {
-    private static EMPTY_STATE = new UserState("", "");
+    private static readonly EMPTY_STATE = new UserState("", "");
     readonly username: string;
     readonly token: string;
 
