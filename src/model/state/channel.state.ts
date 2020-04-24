@@ -16,6 +16,29 @@ class ChannelState {
         return new ChannelState(filteredChannels);
     }
 
+    newWithSelected(channelName: string): ChannelState {
+        const channelToSelect = this.channels.find((channel) => channel.name === channelName);
+        const currentSelected = this.channels.find((channel) => channel.isSelected);
+
+        if (channelToSelect === currentSelected) {
+            return this;
+        }
+
+        if (channelToSelect !== undefined) {
+            const selectedChannel = new ChannelModel(channelToSelect.name, channelToSelect.status, true);
+            if (currentSelected !== undefined) {
+                const deselectedChannel = new ChannelModel(currentSelected.name, currentSelected.status, false);
+                const upsertedState = this.newWithUpserted(selectedChannel);
+
+                return upsertedState.newWithUpserted(deselectedChannel);
+            }
+
+            return this.newWithUpserted(selectedChannel);
+        }
+
+        return this;
+    }
+
     newWithUpserted(channel: ChannelModel): ChannelState {
         const filteredState = this.newWithRemoved(channel.name);
         const updatedChannels = [...filteredState.channels, channel];

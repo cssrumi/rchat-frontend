@@ -1,12 +1,12 @@
 import React from 'react';
 import Channels from './channels/Channels';
-import Messages from "./messages/Messages";
+import Chat from "./chat/Chat";
 
 const ContentWrapper = () => {
     return (
         <div className="content-wrapper">
             <Channels/>
-            <Messages/>
+            <Chat/>
         </div>);
 }
 
