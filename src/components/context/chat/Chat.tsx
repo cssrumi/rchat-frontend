@@ -1,14 +1,12 @@
 import React from "react";
 import Messages from "./Messages";
-import Inputs from "./Inputs";
+import Actions from "./Actions";
 
-const Chat = () => {
-    return (
-        <section className="chat">
-            <Messages/>
-            <Inputs/>
-        </section>
-    )
-}
+const Chat = () => (
+    <section className="chat">
+        <Messages />
+        <Actions />
+    </section>
+);
 
 export default Chat;

@@ -1,0 +1,19 @@
+@import 'palette';
+
+.input {
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid $rchat-grey-4;
+  background: $rchat-grey-4;
+  box-shadow: 10px 0 25px rgba($rchat-grey-1, .03);
+  transition: background .2s;
+
+  &:focus {
+    background: $rchat-white;
+  }
+
+  &.message {
+    width: 70%;
+  }
+}

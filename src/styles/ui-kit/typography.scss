@@ -1,0 +1,46 @@
+@import url('https://rsms.me/inter/inter.css');
+@import 'palette';
+
+$weights: (
+        'regular': 400,
+        'medium': 500,
+        'semi-bold': 600,
+        'bold': 700,
+);
+$alignments: left, center, right;
+$decorations: underline;
+
+span,
+a,
+p,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1 {
+  color: $rchat-grey-1;
+  font: {
+    family: 'Inter', sans-serif;
+    size: 14px;
+    weight: 400;
+  }
+
+  @each $weight-name, $weight-size in $weights {
+    &.#{$weight-name} {
+      font-weight: $weight-size;
+    }
+  }
+
+  @each $alignment in $alignments {
+    &.#{$alignment} {
+      text-align: $alignment;
+    }
+  }
+
+  @each $decoration in $decorations {
+    &.#{$decoration} {
+      text-decoration: $decoration;
+    }
+  }
+}

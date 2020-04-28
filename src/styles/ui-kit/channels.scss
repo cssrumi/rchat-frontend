@@ -1,0 +1,49 @@
+@import 'palette';
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 100%;
+  background: $rchat-white;
+  overflow-y: scroll;
+
+  .channel {
+    min-height: 50px;
+    width: 100%;
+    cursor: pointer;
+    background: $rchat-white;
+    border-bottom: 1px solid $rchat-grey-4;
+    padding: 20px 40px;
+    transition: background .2s, opacity .2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:last-child {
+      margin-bottom: 20px;
+    }
+
+    &.active {
+      background: $rchat-white;
+    }
+
+    &.inactive {
+      background: $rchat-grey-4;
+    }
+
+    &.selected {
+      background: $rchat-orange;
+
+      .channel-name {
+        font-weight: 700;
+      }
+    }
+
+    .channel-name {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+}
