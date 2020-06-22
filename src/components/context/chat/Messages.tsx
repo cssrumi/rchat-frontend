@@ -3,7 +3,6 @@ import {channelStore, messageStore, userStore} from "../../../store";
 import Message from "./Message";
 import MessageModel from "../../../model/message.model";
 import {MessageState, UserState} from "../../../model/state";
-import UserMessage from "./UserMessage";
 
 const Messages = (channel: any) => {
 
@@ -32,9 +31,7 @@ const Messages = (channel: any) => {
     }
 
     const mapMessage = (message: MessageModel) => {
-        return message.sendBy === userState.username ?
-            <UserMessage key={message.id} message={message} time={time(message)}/> :
-            <Message key={message.id} message={message} time={time(message)}/>;
+        return <Message key={message.id} message={message} own={message.sendBy === userState.username} time={time(message)}/>;
     }
 
     const scrollToBottom = () => {

@@ -29,40 +29,35 @@ const Actions = () => {
         console.log("LogoutEventOccurred");
     }
 
-    const getActions = () => {
-        const loginElement = (
-            <form id="loginForm" onSubmit={onLoginFormSubmit}>
-                <input
-                    type="text"
-                    id="loginInput"
-                    name="loginInput"
-                    placeholder="login..."
-                    required
-                />
-                <input
-                    type="password"
-                    id="passwordInput"
-                    name="passwordInput"
-                    placeholder="password..."
-                    required
-                />
-                <button type="submit" hidden/>
-            </form>
-        );
-        const logoutElement = (
-            <button className="button" onClick={onLogoutButtonSubmit}>Logout</button>
-        );
+    const loginElement = (
+        <form id="loginForm" onSubmit={onLoginFormSubmit}>
+            <input
+                type="text"
+                id="loginInput"
+                name="loginInput"
+                placeholder="Username"
+                className="input"
+                required
+            />
+            <input
+                type="password"
+                id="passwordInput"
+                name="passwordInput"
+                placeholder="Password"
+                className="input"
+                required
+            />
+            <button type="submit" className="button primary">Login</button>
+        </form>
+    );
 
-        if (userState !== UserState.empty()) {
-            return logoutElement;
-        }
-
-        return loginElement;
-    }
+    const logoutElement = (
+        <button className="button primary" onClick={onLogoutButtonSubmit}>Logout</button>
+    );
 
     return (
         <div className="actions">
-            {getActions()}
+            { userState !== UserState.empty() ? logoutElement : loginElement }
         </div>
     );
 };

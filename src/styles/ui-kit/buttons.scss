@@ -1,0 +1,17 @@
+@import 'palette';
+
+.button {
+  min-width: 100px;
+  height: 40px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+  &.primary {
+    background: $rchat-blue-1;
+    color: $rchat-grey-4;
+  }
+}

@@ -1,0 +1,36 @@
+@import 'palette';
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  background: $rchat-white;
+  box-shadow: 10px 0 25px rgba($rchat-grey-1, .03);
+
+  .logo {
+    height: 40px;
+    width: 40px;
+    background: $rchat-orange;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .actions {
+    #loginForm {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}

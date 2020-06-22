@@ -4,7 +4,7 @@ import {channelStore, userStore} from "../../../store";
 import {sendMessage} from "../../../api/message.api";
 import SendMessageModel from "../../../model/send.message.model";
 
-const Inputs = () => {
+const Actions = () => {
 
     const [userState, setUserState] = useState<UserState>(UserState.empty);
     const [selectedChannel, setSelectedChannel] = useState<string>("");
@@ -12,7 +12,7 @@ const Inputs = () => {
     useEffect(() => {
         userStore.subscribe(setUserState);
         channelStore.subscribeToSelectedChannel(setSelectedChannel);
-        console.log("Inputs rendered")
+        console.log("Actions rendered")
     }, []);
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -23,32 +23,28 @@ const Inputs = () => {
         const messageRequest = new SendMessageModel(inputValue);
         sendMessage(messageRequest, selectedChannel, userStore.authorizeOptions());
         target.reset();
-        console.log("Message send...");
-    }
-
-    const optionalInput = () => {
-        if (userStore.isLoggedIn()) {
-            return (
-                <form className="inputs" onSubmit={onSubmit}>
-                    <input
-                        type="text"
-                        className="text"
-                        id="input"
-                        name="input"
-                        placeholder="Type your message..."
-                        required
-                    />
-                    <button type="submit" hidden/>
-                </form>
-            );
-        }
+        console.log("Message sent...");
     }
 
     return (
-        <div className="inputs">
-            {optionalInput()}
+        <div className="actions">
+            {
+                userStore.isLoggedIn() && (
+                    <form onSubmit={onSubmit}>
+                        <input
+                            type="text"
+                            className="input message"
+                            id="input"
+                            name="input"
+                            placeholder="Type your message..."
+                            required
+                        />
+                        <button type="submit" className="button primary">Send</button>
+                    </form>
+                )
+            }
         </div>
     )
 }
 
-export default Inputs;
+export default Actions;

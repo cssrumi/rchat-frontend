@@ -1,0 +1,32 @@
+@import "../ui-kit/palette";
+
+.chat {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 100px 0;
+
+  .actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    box-shadow: 10px 0 25px rgba($rchat-grey-1, .03);
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+
+      .input {
+        height: 50px;
+      }
+    }
+  }
+}
